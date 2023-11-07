@@ -1,0 +1,26 @@
+.menu{
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    margin:50px;
+    top: 50px;  
+    z-index: 1000; 
+    padding: 10px; 
+}
+.menu select, .menu input, .menu button {
+    margin: 5px;   
+}
+.menu select,
+.menu input[type="text"],
+.menu button {
+    flex: 1; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    margin: 5px; 
+    box-sizing: border-box; 
+    cursor: pointer;
+}

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="student.jpg">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="bootstrap.css" />
+        <link href="style.sv.css" rel="stylesheet" />
+        <link href="responsive.sv.css" rel="stylesheet" />
+        <link rel="stylesheet" href=" ttkb.css" />
+        
+        <script src="bootstrap.min.js"></script>
+        <script src="jquery-3.3.1.min.js"></script>
+        <scrip src="ttkb.js"></scrip>
+        
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+       
+        
+        <title>Thang Long University</title>
+        <style>
+            .title {
+                text-align: center;
+                font-size: 20px;
+                font-weight: bold;
+                color: red;
+            }
+    
+            .search-box {
+                display: block;
+                text-align: center;
+            }
+    
+            .subject-box {
+                margin-left: 10px;
+                height: 500px;
+                overflow-y: auto;
+            }
+    
+            .subject-box .subject {
+                padding-left: 5px;
+            }
+    
+            .subject-box .subject span {
+                font-size: 15px;
+                color: blue;
+            }
+    
+            .subject-box .subject ul {
+                padding: 5px;
+            }
+            .page-footer{
+                margin : 50px 0px;
+            }
+            label {
+                padding-left: 5px;
+                display: inline-block;
+                max-width: 100%;
+                margin-bottom: 5px;
+                font-weight: 500;
+                font-size: 13px;
+                width: 90%;
+            }
+    
+            .subject-box .subject .list-class {
+                font-size: 15px;
+            }
+    
+            table td {
+                width: 100px;
+                word-break: break-word;
+            }
+    
+            table th {
+                width: 100px;
+            }
+    
+            .loading-result {
+                width: 100%;
+                display: fixed;
+                margin: auto;
+                padding: 10px 50px;
+    
+            }
+    
+            .sub {
+                background-color: yellow;
+                vertical-align: middle;
+                text-align: center;
+            }
+    
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>   
+    
+    <body>
+        <div id="page" class="container-fluid">
+            <!--begin header-->
+            <header class="col-lg-12 col-md-12">
+                <div class="header-top">
+                    <div class="container clearfix">
+                        <div id="date" class="float-lg-left float-md-left">Loading...</div>
+                        <script type="text/javascript">
+                            function displayDate() {
+                                var d = new Date();
+                                var day = d.getDay();
+                                var date = d.getDate();
+                                var month = d.getMonth();
+                                var year = d.getFullYear();
+                                var days = new Array("Chủ nhật", "Thứ hai", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7");
+                                var months = new Array("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
+                                document.getElementById("date").innerHTML = days[day] + ", Ngày " + date + "/" + months[month] + "/" + year;
+                            }
+                            displayDate();
+                        </script>
+                        <div id="connects" class="float-lg-right float-md-right">
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.facebook.com/" target="_blank"><img src="facebook-icon.png" alt="facebook" /></a></li>
+                                <li><a href="https://twitter.com/" target="_blank"><img src="twitter-icon.png" alt="twiter" /></a></li>
+                                <li><a href="https://plus.google.com/" target="_blank"><img src="google-icon.png" alt="google+" /></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><img src="linkedin-icon.png" alt="linkedin" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-logo">
+                    <div class="clearfix container">
+                        <div class="col-md-3 float-md-left">
+                            <a href="index.html">
+                                <img src="logo-tl.svg" width="250px" />
+                            </a>
+                        </div>
+                        <div class="header-title col-md-9 float-md-right">
+                            <div class="right-title">ĐẠI HỌC THĂNG LONG</div>
+                            <div class="sub-title">Năng động - Sáng tạo - Nhiệt huyết</div>
+                        </div>
+                    </div>
+                </div>
+               
+            </header>
+            <!--end header-->
+            <!--begin nav-->
+            <nav class="navbar navbar-expand-lg sticky-top">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon" style="color:#fff; font-weight:900;">&equiv;</span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">Trang chủ<span></span><span></span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="xemdiem.html">Xem kết quả học tập<span></span><span></span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="dkhp.html">Đăng kí học phần<span></span><span></span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="error.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Thời khóa biểu<span></span><span></span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="tkb.html">Thời khóa biểu toàn trường</a>
+                                    <a class="dropdown-item" href="ttkb.html">Tạo thời khóa biểu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="lienhe.html">Liên hệ<span></span><span></span><span></span><span></span></a>
+                            
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0" method="get" action="https://www.google.com/search" target="_blank">
+                            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <!--end nav-->
+            <button onclick="clearSchedule()">Clear lịch học</button>
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="title">Danh sách môn học</div>
+            <div class="search-box">
+                <input type="text" id="subName" onkeyup="searchSubject()" placeholder="Nhập môn học cần tìm ..."
+                    title="Nhập môn học">
+            </div>
+            <div class="subject-box" id="subject-box"></div>
+        </div>
+        <div class="col-sm-7">
+            <div class="title">Thời khóa biểu</div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ca</th>
+                        <th>Thứ 2</th>
+                        <th>Thứ 3</th>
+                        <th>Thứ 4</th>
+                        <th>Thứ 5</th>
+                        <th>Thứ 6</th>
+                        <th>Thứ 7</th>
+                        <th>Chủ nhật</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td id="mon-1"></td>
+                        <td id="tue-1"></td>
+                        <td id="wed-1"></td>
+                        <td id="thur-1"></td>
+                        <td id="fri-1"></td>
+                        <td id="sat-1"></td>
+                        <td id="sun-1"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+    </div>
+    <script src="ttkb.js"></script>
+    <script>
+        function clearSchedule() {
+            console.log("cleared");
+            localStorage.clear();
+            location.reload();
+        }
+    </script>
+            <!--footer-->
+            <footer class="page-footer">
+                <div class="container">
+                    <div class="footer-top">
+                        <h4 class="title-footer">Đại học Thăng Long</h4>
+                        <div>
+                            <i class="fa fa-home"></i>
+                            <span>Địa chỉ : Đường Nghiêm Xuân Yêm, Phường Đại Kim, Quận Hoàng Mai, TP. Hà Nội</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-phone"></i>
+                            <span>Hotline : 02499991988</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-fax"></i>
+                            <span>Fax: 02435636775</span>
+                        </div>
+                        <div class="footer-contact">
+                            <span style="float: left">Contact us:</span>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.facebook.com/" target="_blank"><img src="facebook-footer.png" alt="facebook" /></a></li>
+                                <li><a href="https://twitter.com/" target="_blank"><img src="twitter-footer.png" alt="twiter" /></a></li>
+                                <li><a href="https://plus.google.com/" target="_blank"><img src="google-footer.png" alt="google+" /></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><img src="linkedin-footer.png" alt="linkedin" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-bottom" style="text-align:center">
+                        <strong style="margin: 0; width:inherit;">&copy; Bản quyền thuộc về TLU. Đã đăng ký Bản quyền</strong><br />
+                        <em>Dẫn đầu chất lượng đào tạo</em>
+                    </div>
+                </div>
+            </footer>   
+        </div>
+    </body>
+</html>

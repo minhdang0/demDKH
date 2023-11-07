@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page - Add</title>
+    <link rel="icon" type="image/png" href="addd.png">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css' />
+	<link rel='stylesheet prefetch' href="./css/jquery.toastmessage.css" />
+	   <link href="./bootstrap-theme.min.css" rel="stylesheet" />
+	   <script src="./js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/admin.js"></script>
+    <script src="./js/jquery.toastmessage.js"></script>
+    <script src="./js/jquery.validate.js"> </script>
+    <script src="./js/index2.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+  
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    
+    <style>
+        .title{
+            margin: 35px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+        margin-top: 20px;
+        }
+
+        .panel-heading {
+          font-size: small;
+        }
+
+        .alert {
+            
+        display: none;
+        }
+
+        h2{
+            font-size: 2.0rem;
+            color:#D91E1E
+        }
+        .error {
+
+            color: #D91E1E;
+            font-size: small;
+            
+        }
+    </style>
+    
+
+</head>
+
+    <body>
+        <div class="container">
+            <div class="sideArea">
+                <div class="avatar">
+                    <div><img src="tml.jpg" alt=""></div>
+                    <div class="avatarName">Trang Admin<br></div>
+                </div>
+            <ul class="sideMenu">
+                <li><a href="admin.html"><span class="fa fa-plus"></span>Add Subjects</a></li>
+                <li><a href="admin-user.html"><span class="fa fa-user"></span>Users</a></li>
+                <li class="active"><a href="suaxoa.html"><i class="fa fa-list"></i>Danh sách môn học </a></li>
+            </ul>
+        </div>
+
+    <div class="mainArea">
+            <nav class="navTop row">
+                <select id="redirectSelect" onchange="redirect(this)">
+                    <option value="">Chọn trang</option>
+                    <option value="index.html">Trang chủ</option>
+                    <option value="index.html">Logout</option>
+                  </select>
+            </nav>
+       
+            <div class="px-5">
+                <div class="title">
+                  <h2>Danh sách môn học</h2>
+                </div>
+        
+                <div class="table">
+                  <table id="table" class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Mã môn</th>
+                        <th scope="col">Môn</th>
+                        <th scope="col">Số tín</th>
+                        <th scope="col">Giảng viên</th>
+                        <th scope="col">Lớp</th>
+                        <th scope="col">Phòng học</th>
+                        <th scope="col">Thứ</th>
+                        <th scope="col">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+        
+              
+              <script src="data.js"></script>
+              <script defer>
+                console.log(data)
+        
+                var table = ""
+                
+                // var html=""
+                // data.forEach((ele, i) => {
+                //   html +=  `
+                //     <tr>
+                //         <th scope="row">${i+1}</th>
+                //         <td>${ele.ma}</td>
+                //         <td>${ele.ten}</td>
+                //         <td>${ele.sotin}</td>
+                //         <td>${ele.giangvien}</td>
+                //         <td>${ele.lop}</td>
+                //         <td>${ele.phong}</td>
+                //         <td>${ele.thu}</td>
+                //       </tr>
+                //   `
+                // });
+        
+                // $("#table tbody").html(html)
+        
+        
+                function updateHandler(e){
+                  var id = $(e.target.parentElement).attr("data-value")
+        
+        
+                  // var table =$('#table').DataTable();
+                  // var row = $(this).closest('tr');
+                  // var data = table.row( row ).data();
+                  // console.log(data);
+                  // table.row( row ).data(data);
+        
+                }
+        
+                function deleteHandler(e){
+                  table
+                    .row( $(this).parents('tr') )
+                    .remove()
+                    .draw();
+        
+                }
+        
+        
+                
+                var count = 0;
+                table = $('#table').DataTable( {
+                    data: data,
+                    pageLength: 10,
+                    destroy: true,
+                    columns: [
+                        {
+                            render: function () {
+                                return ++count
+                            }
+                        },
+                        { data: 'ma' },
+                        { data: 'ten' },
+                        { data: 'sotin' },
+                        { data: 'giangvien' },
+                        { data: 'lop' },
+                        { data: 'phong' },
+                        { data: 'thu' },
+                        {  
+                          data: "id",
+                          render: function(data){
+                            return `<div data-value="${data}"><span class="update">Sửa</span><span class="delete">Xóa</span></div>`
+                          },
+                          "targets": -1
+                        },
+                    ]
+                } );
+        
+        
+                $(".update").on("click", updateHandler)
+                $(".delete").on("click", deleteHandler)
+        
+        
+              </script>
+        
+        
+
+
+
+        <script  src="js/index.js"></script>
+    </div>
+</body>
+</html>

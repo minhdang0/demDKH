@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="login.jpg">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="bootstrap.css" />
+       
+        <link href="style.css" rel="stylesheet" />
+        <link href="responsive.css" rel="stylesheet" />
+        <script src="bootstrap.min.js"></script>
+        <script src="jquery-3.3.1.min.js"></script>
+        <title>Đăng nhập | Đăng ký học phần</title>
+        <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+        }
+        </style>
+        <script type="text/javascript">
+            $(function () {
+                function ktmssv() {
+                    var reg = /^\d{8}$/;
+                    if ($("#mssv").val() == "") {
+                        $("#tbmssv").html("*Bắt buộc nhập tên đăng nhập");
+                        return false;
+                    }
+                    if (!reg.test($("#mssv").val())) {
+                        $("#tbmssv").html("Tên đăng nhập là mã số 8 chữ số");
+                        return false;
+                    }
+                    $("#tbmssv").html("");
+                    return true;
+                }
+                function ktPass() {
+                    var reg = /(?=.*\d)(?=.*[a-zA-Z]).{6,}/;
+                    if ($("#txtPass").val() == "") {
+                        $("#tbPass").html("*Bắt buộc nhập mật khẩu");
+                        return false;
+                    }
+                    if (!reg.test($("#txtPass").val())) {
+                        $("#tbPass").html("Mật khẩu phải ít nhất 6 kí tự bao gồm cả chữ và số");
+                        return false;
+                    }
+                    $("#tbPass").html("");
+                    return true;
+                }
+                function login() {
+                    if (ktmssv() == false || ktPass() == false) {
+                        alert("Đăng nhập thất bại!!!")
+                        return false;
+                    }
+                    $("#txtmssv").val("");
+                    $("#txtPass").val("");
+                    window.open("dkhp.html", target = "_blank");
+                    return true;
+                }
+                $("#mssv").on("blur", ktmssv);
+                $("#txtPass").on("blur", ktPass);
+                $("#f1").on("submit", login);
+    
+            })
+        </script>
+    </head>
+    
+    <body>
+        <div id="page" class="container-fluid">
+            <!--begin header-->
+            <header class="col-lg-12 col-md-12">
+                <div class="header-top">
+                    <div class="container clearfix">
+                        <div id="date" class="float-lg-left float-md-left">Loading...</div>
+                        <script type="text/javascript">
+                            function displayDate() {
+                                var d = new Date();
+                                var day = d.getDay();
+                                var date = d.getDate();
+                                var month = d.getMonth();
+                                var year = d.getFullYear();
+                                var days = new Array("Chủ nhật", "Thứ hai", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7");
+                                var months = new Array("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
+                                document.getElementById("date").innerHTML = days[day] + ", Ngày " + date + "/" + months[month] + "/" + year;
+                            }
+                            displayDate();
+                        </script>
+                        <div id="connects" class="float-lg-right float-md-right">
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.facebook.com/" target="_blank"><img src="facebook-icon.png" alt="facebook" /></a></li>
+                                <li><a href="https://twitter.com/" target="_blank"><img src="twitter-icon.png" alt="twiter" /></a></li>
+                                <li><a href="https://plus.google.com/" target="_blank"><img src="google-icon.png" alt="google+" /></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><img src="linkedin-icon.png" alt="linkedin" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-logo">
+                    <div class="clearfix container">
+                        <div class="col-md-3 float-md-left">
+                            <a href="index.html">
+                                <img src="logo-tl.svg" width="250px" />
+                            </a>
+                        </div>
+                        <div class="header-title col-md-9 float-md-right">
+                            <div class="right-title">ĐẠI HỌC THĂNG LONG</div>
+                            <div class="sub-title">Năng động - Sáng tạo - Nhiệt huyết</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="demo" class="carousel slide" data-ride="carousel">
+                    <!-- The slideshow -->
+                    <div class="container">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="image-header1.jpg" alt="img1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!--end header-->
+            <!--main-->
+            <div class="container">
+              <form action="" id="f1">
+                  <br>
+                <h1 text-align="center">đăng ký học phần</h1>
+                <div class="form-group">
+                    <label for="mssv" class="control-label">Mã số sinh viên:</label>
+                    <input type="text" class="form-control" id="mssv" name="mssv" placeholder="MSSV">
+                    <span class="text-danger" id="tbmssv"></span>
+                </div>
+                <div class="form-group">
+                    <label for="txtPass" class="control-label">Mật khẩu:</label>
+                    <input type="password" class="form-control" id="txtPass" name="txtPass" placeholder="Mật khẩu" />
+                    <span class="text-danger" id="tbPass"></span>
+                </div>
+    
+                <input type="submit" class="btn btn-primary" value="Đăng nhập">
+    
+              </form>
+            </div>
+            <!--end main-->
+            <footer class="page-footer">
+                <div class="container">
+                    <div class="footer-top">
+                        <h4 class="title-footer">Đại học Thăng Long</h4>
+                        <div>
+                            <i class="fa fa-home"></i>
+                            <span>Địa chỉ : Đường Nghiêm Xuân Yêm, Phường Đại Kim, Quận Hoàng Mai, TP. Hà Nội</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-phone"></i>
+                            <span>Hotline : 02499991988</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-fax"></i>
+                            <span>Fax: 02435636775</span>
+                        </div>
+                        <div class="footer-contact">
+                            <span style="float: left">Contact us:</span>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.facebook.com/" target="_blank"><img src="facebook-footer.png" alt="facebook" /></a></li>
+                                <li><a href="https://twitter.com/" target="_blank"><img src="twitter-footer.png" alt="twiter" /></a></li>
+                                <li><a href="https://plus.google.com/" target="_blank"><img src="google-footer.png" alt="google+" /></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><img src="linkedin-footer.png" alt="linkedin" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-bottom" style="text-align:center">
+                        <strong style="margin: 0; width:inherit;">&copy; Bản quyền thuộc về TLU. Đã đăng ký Bản quyền</strong><br />
+                        <em>Dẫn đầu chất lượng đào tạo</em>
+                    </div>
+                </div>
+            </footer>
+            <!--end footer-->
+       
+        </div>
+    </body>
+</html>

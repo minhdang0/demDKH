@@ -1,0 +1,494 @@
+@charset "utf-8";
+
+*, :before, :after {
+    box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6, p, dt, dd, th, td, li, a {
+    line-height: 1;
+    font-weight: normal;
+}
+body, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, table, tr, thead, tbody, th, td, ul, li, a {
+    margin: 0;
+    padding: 0;
+}
+p {
+    line-height: 1.5;
+}
+ul {
+  list-style: none;
+}
+a, a:hover, a:focus, a:visited {
+    display: inline-block;
+    text-decoration: none;
+}
+a {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+span, label {
+    display: inline-block;
+}
+input, textarea, select, button {
+    font-size: 1em;
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 0.5em 1em;
+    vertical-align: top;
+}
+select {
+    padding: calc(0.5em - 1px) 1em;
+}
+input[type="submit"], button {
+    cursor: pointer;
+}
+input[type="file"] {
+    max-width: 13.2em;
+    border: none;
+    padding: 0;
+}
+img {
+    display: inline-block; 
+    max-width: 100%;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+/* COLOR */
+.bg-fff {
+    background-color: #fff;
+}
+.bg-000 {
+    background-color: #000;
+}
+.text-fff {
+    color: #fff;
+}
+.text-center {
+    text-align: center !important;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-right {
+    text-align: right !important;
+}
+.text-bold {
+    font-weight: bold;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+strike {
+    text-decoration: line-through;
+    color: #FFFFFF;
+}
+
+/* GRID */
+.row:before, .row:after {
+    content: "";
+    display: table;
+}
+.row:after {
+    clear: both;
+}
+
+
+
+
+
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+
+
+/* PAGE ADMIN CSS  */
+
+
+body {
+   font-family: "Avenir Next",sans-serif;
+    font-size: 14px;
+    color: #2a3f54;
+    background: #f7f7f7;
+}
+
+.bg-1 {
+    background: #060A52;
+}
+
+.text-1 {
+    color: #060A52;
+}
+
+/* ADMIN PAGE */
+/* FORM & INPUT */
+span {
+    display: inline-block;
+}
+label {
+    display: inline-block;
+    cursor: pointer;
+}
+.checkbox {
+    font-size: 20px;
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    background: #557daa;
+    vertical-align: middle;
+}
+.checkbox:before {
+    content: "";
+    display: block;
+    width: 1em;
+    height: 1em;
+    background: #fff;
+    border: 1px solid #557daa;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+.checkbox:after {
+    content: "";
+    width: 0.7em;
+    height: 0.5em;
+    position: absolute;
+    top: 0.14em;
+    left: 0.16em;
+    border-left: 0.15em solid #fff;
+    border-bottom: 0.15em solid #fff;
+    background-position: top left, bottom left;
+    transform: rotate(-45deg);
+    display: none;
+    cursor: pointer;
+}
+.checkbox:checked:before {
+    background: #557daa;
+}
+.checkbox:checked:after {
+    display: block;
+}
+
+
+/*CONTENTS CSS */
+.container {
+    display: flex;
+    display: -webkit-flex;
+    padding-left: 200px;
+    transition: 0.5s;
+}
+.container.is-click {
+    padding-left: 0;
+}
+.avatar {
+    margin: 50px 1em;
+    position: relative;
+    display: table;
+}
+.avatar img {
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #fff;
+    overflow: hidden;
+}
+.avatarName {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 1em;
+    color: #fff;
+    line-height: 1.5;
+    font-family: "Avenir Next",sans-serif;
+}
+
+
+/* SIDE CSS */
+.sideArea {
+    width: 200px;
+    min-width: 200px;
+    background: #060A52;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: 0.5s;
+}
+.container.is-click .sideArea {
+    left: -200px;
+}
+.sideArea li>a {
+    display: block;
+    color: #fff;
+    padding: 1em;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.sideArea li>a:hover {
+    background: rgba(255,255,255,0.1);
+}
+.sideArea li>a>.fa {
+    width: 1em;
+    text-align: center;
+    margin-right: 10px;
+}
+.submenu {
+    display: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.submenu li>a {
+    padding-left: 2em;
+    border-bottom: none;
+}
+.sideMenu {
+    border-top: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+/* MAIN CSS */
+.mainArea {
+    width: 100%;
+    overflow: hidden;
+}
+.navTop {
+    background: #FFFFFF;
+    border-bottom: 1px solid #dedede;
+    padding: 0 1em;
+}
+.menuIcon {
+    font-size: 1.5em;
+    padding: 0.4em;
+    cursor: pointer;
+}
+.account {
+    position: relative;
+    padding: 0 1em;
+}
+.name{
+    color: #2A3F54;
+    padding: 1em 0;
+    cursor: pointer;
+}
+.name>span {
+    margin-left: 10px;
+}
+.accountLinks {
+    width: calc(200px - 2em);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border: 1px solid #dedede;
+}
+.accountLinks li {
+    border: none !important;
+}
+.accountLinks li a {
+    display: block;
+    color: #2A3F54;
+    padding: 0.7em 1em;
+}
+.account:hover, .accountLinks li a:hover {
+    background: rgba(42,63,84,0.1);
+}
+
+.mainContent {
+    padding: 20px;
+}
+
+/* ADMIN FORM */
+.form {
+    background: #fff;
+    border: 1px solid #dedede;
+}
+.formHeader {
+    padding: 1em;
+    background: #fff;
+    border-bottom: 1px solid #dedede;
+}
+.formBody {
+    width: 100%;
+    padding: 20px 20px 10px 20px;
+}
+
+/* LIST FORM */
+.btnAdd, .btnSave, .btnEdit, .btnRemove, .btnEditSub, .btnRemoveSub, .btnEditUser, .btnRemoveUser {
+    padding: 0.5em;
+    margin: 0 2px;
+}
+.btnSave {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+.btnSwitch {
+    font-size: 10px;
+}
+.btnSwitch.all {
+    position: absolute;
+    bottom: calc(100% + 3.7em);
+    left: calc(50% - 4em);
+}
+.scrollX {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+/* TABLE */
+.table {
+    width: 100%;
+    min-width: 768px;
+}
+.table .row {
+    width: 100%;
+}
+.table .row .cell {
+    display: table-cell;
+    padding: 10px;
+    vertical-align: middle;
+}
+.table>ul>li {
+    border-bottom: 1px solid #dedede;
+}
+.table .cell-50 {
+    max-width: 50px;
+    min-width: 50px;
+}
+.table .cell-100 {
+    max-width: 100px;
+    min-width: 100px;
+}
+.table .cell-150 {
+    max-width: 150px;
+    min-width: 150px;
+}
+.table .cell-200 {
+    max-width: 200px;
+    min-width: 200px;
+}
+.table .cell-100p {
+    width: 100%;
+}
+
+
+/* DETAIL FORM */
+.inputGroup {
+    display: block;
+    margin-bottom: 10px;
+}
+.inputGroup>span:first-child {
+    width: 100px;
+    padding-bottom: 10px;
+    text-align: right;
+    padding-right: 10px;
+    vertical-align: top;
+}
+.inputGroup>span {
+    display: table-cell;
+}
+.inputGroup input, .inputGroup select {
+    margin-bottom: 10px;
+}
+.form textarea {
+    width: 100%;
+    min-height: 20em;
+}
+#pagination {
+    margin-top: 20px;
+}
+.btnNewInput {
+    padding: 0.6em;
+}
+.inputNumber {
+    max-width: 3em;
+    padding: 0.5em 0;
+    text-align: center;
+}
+
+
+
+.formSearch {
+    margin-bottom: 15px;
+    position: relative;
+}
+.inputSearch {
+    padding-right: 3em;
+}
+.btnSearch {
+    padding: 0.5em 1em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+}
+
+
+li.active{
+	background-color: #DCDCDC;
+}
+li.active > a {
+    color:#000; 
+}
+.text-left{
+	text-align: left;
+}
+
+
+.cell-fix-10{width: 10px;}
+.cell-fix-20{width: 20px;}
+.cell-fix-30{width: 30px;}
+.cell-fix-40{width: 40px;}
+.cell-fix-50{width: 50px;}
+.cell-fix-60{width: 60px;}
+.cell-fix-70{width: 70px;}
+.cell-fix-80{width: 80px;}
+.cell-fix-90{width: 90px;}
+.cell-fix-100{width: 100px;}
+.cell-fix-110{width: 110px;}
+.cell-fix-120{width: 120px;}
+.cell-fix-130{width: 130px;}
+.cell-fix-140{width: 140px;}
+.cell-fix-150{width: 150px;}
+.cell-fix-160{width: 160px;}
+.cell-fix-170{width: 170px;}
+.cell-fix-180{width: 180px;}
+.cell-fix-190{width: 190px;}
+.cell-fix-200{width: 200px;}
+.cell-fix-250{width: 250px;}
+.text-danger{
+	color:red;
+}
+.delete, .update{
+    cursor: pointer;
+  }
+
+  .update{
+    color: blue;
+  }
+
+  .delete{
+    color: red;
+    padding-left: 10px;
+  }
+
+
+  #table tbody tr{
+    vertical-align: middle;
+  }
+
+  
+  #table tbody tr td{
+    font-size: 13px;
+  }
+
+  #table tbody tr td:nth-child(1){
+    font-weight: 600;
+  }

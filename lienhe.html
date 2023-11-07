@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="phone.jpg">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="bootstrap.css" />
+      
+        <link href="style.css" rel="stylesheet" />
+        <link href="responsive.css" rel="stylesheet" />
+        <script src="bootstrap.min.js"></script>
+        <script src="jquery-3.3.1.min.js"></script>
+        <title>Thang Long University</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+    
+            input[type=text], select, textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-top: 6px;
+                margin-bottom: 16px;
+                resize: vertical;
+            }
+    
+            input[type=submit] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+    
+                input[type=submit]:hover {
+                    background-color: #45a049;
+                }
+    
+            h1 {
+                text-align: center;
+            }
+        </style>
+        <script type="text/javascript">
+            $(function(){
+                function ktHoTen() {
+                    var reg = /^[a-zA-ZaáạàảãăắặằẳẵâấậầẩẫeéẹèẻẽêếệềểễiíịìỉĩoóọòỏõôốộồổỗơớợờởỡuúụùủũưứựừửữyýỵỳỷỹđAÁẠÀẢÃĂẮẶẰẲẴÂẤẬẦẨẪEÉẸÈẺẼÊẾỆỀỂỄIÍỊÌỈĨOÓỌÒỎÕÔỐỘỒỔỖƠỚỢỜỞỠUÚỤÙỦŨƯỨỰỪỬỮYÝỴỲỶỸĐ\s\']+$/;
+                    if ($("#fname").val() == "") {
+                        $("#tbfname").html("*Bắt buộc nhập họ tên");
+                        return false;
+                    }
+                    if (!reg.test($("#fname").val())) {
+                        $("#tbfname").html("Họ tên chỉ chứa kí tự chữ và dấu nháy đơn (')");
+                        return false;
+                    }
+                    $("#tbfname").html("");
+                    return true;
+                }
+                function ktEmail() {
+                    var reg = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+                    if ($("#txtEmail").val() === "") {
+                        $("#tbEmail").html("Không được để trống email");
+                        return false;
+                    }
+                    if (!reg.test($("#txtEmail").val())) {
+                        $("#tbEmail").html("email có mẫu: xxx@xxx.xxx");
+                        return false;
+                    }
+                    $("#tbEmail").html("");
+                    return true;
+                }
+                function ktSubject() {
+                    if ($("#subject").val() === "") {
+                        $("#tbsubject").html("Cho tôi biết ý kiến của bạn là gì???");
+                        return false;
+                    }
+                    $("#tbsubject").html("");
+                    return true;
+                }
+                function send() {
+                    if (ktHoTen == false || ktEmail == false || ktSubject == false) {
+                        alert("Hãy hoàn thành góp ý của bạn!!!");
+                        return false;
+                    }
+                    alert("Chúng tôi cảm ơn ý kiến đóng góp của bạn");
+                    return true;
+                   
+                }
+                $("#txtEmail").on("blur", ktEmail);
+                $("#fname").on("blur", ktHoTen);
+                $("#subject").on("blur", ktSubject);
+                $("#f1").on("submit", send);
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div id="page" class="container-fluid">
+            <!--begin header-->
+            <header class="col-lg-12 col-md-12">
+                <div class="header-top">
+                    <div class="container clearfix">
+                        <div id="date" class="float-lg-left float-md-left">Loading...</div>
+                        <script type="text/javascript">
+                            function displayDate() {
+                                var d = new Date();
+                                var day = d.getDay();
+                                var date = d.getDate();
+                                var month = d.getMonth();
+                                var year = d.getFullYear();
+                                var days = new Array("Chủ nhật", "Thứ hai", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7");
+                                var months = new Array("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
+                                document.getElementById("date").innerHTML = days[day] + ", Ngày " + date + "/" + months[month] + "/" + year;
+                            }
+                            displayDate();
+                        </script>
+                        <div id="connects" class="float-lg-right float-md-right">
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.facebook.com/" target="_blank"><img src="facebook-icon.png" alt="facebook" /></a></li>
+                                <li><a href="https://twitter.com/" target="_blank"><img src="twitter-icon.png" alt="twiter" /></a></li>
+                                <li><a href="https://plus.google.com/" target="_blank"><img src="google-icon.png" alt="google+" /></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><img src="linkedin-icon.png" alt="linkedin" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-logo">
+                    <div class="clearfix container">
+                        <div class="col-md-3 float-md-left">
+                            <a href="index.html">
+                                <img src="logo-tl.svg" width="250px" />
+                            </a>
+                        </div>
+                        <div class="header-title col-md-9 float-md-right">
+                            <div class="right-title">ĐẠI HỌC THĂNG LONG</div>
+                            <div class="sub-title">Năng động - Sáng tạo - Nhiệt huyết</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="demo" class="carousel slide" data-ride="carousel">
+                    <!-- The slideshow -->
+                    <div class="container">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="image-header1.jpg" alt="img1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!--end header-->
+            <!--main-->
+            <div class="container">
+                <form id="f1">
+                    <br />
+                    <h1 text-align="center">Hòm thư góp ý</h1>
+    
+                    <div>
+                        <label for="fname">Họ và Tên</label>
+                        <input type="text" id="fname" name="lfname" placeholder="Tên của bạn" />
+                        <span id="tbfname" class="text-danger"></span>
+                    </div>
+    
+                    <div>
+                        <label for="txtEmail">Email</label>
+                        <input type="text" id="txtEmail" name="txtEmail" placeholder="Email" />
+                        <span id="tbEmail" class="text-danger"></span>
+                    </div>
+                    
+                    <div>
+                        <label for="position">Chức vụ</label>
+                        <select id="position" name="position">
+                            <option value="sinhvien">Sinh viên</option>
+                            <option value="giangvien">Giảng viên</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="subject">Ý kiếm của bạn</label>
+                        <textarea id="subject" name="subject" placeholder="Hãy cho tôi biết ý kiến của bạn để tôi cải thiện mình hơn" style="height:200px"></textarea>
+                        <span id="tbsubject" class="text-danger"></span>
+                    </div>
+                    <input type="submit" value="Gửi" />
+    
+                </form>
+            </div>
+            <!--end main-->
+            <footer class="page-footer">
+                <div class="container">
+                    <div class="footer-top">
+                        <h4 class="title-footer">Đại học Thăng Long</h4>
+                        <div>
+                            <i class="fa fa-home"></i>
+                            <span>Địa chỉ : Đường Nghiêm Xuân Yêm, Phường Đại Kim, Quận Hoàng Mai, TP. Hà Nội</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-phone"></i>
+                            <span>Hotline : 02499991988</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-fax"></i>
+                            <span>Fax: 02435636775</span>
+                        </div>
+                        <div class="footer-contact">
+                            <span style="float: left">Contact us:</span>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.facebook.com/" target="_blank"><img src="facebook-footer.png" alt="facebook" /></a></li>
+                                <li><a href="https://twitter.com/" target="_blank"><img src="twitter-footer.png" alt="twiter" /></a></li>
+                                <li><a href="https://plus.google.com/" target="_blank"><img src="google-footer.png" alt="google+" /></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><img src="linkedin-footer.png" alt="linkedin" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-bottom" style="text-align:center">
+                        <strong style="margin: 0; width:inherit;">&copy; Bản quyền thuộc về TLU. Đã đăng ký Bản quyền</strong><br />
+                        <em>Dẫn đầu chất lượng đào tạo</em>
+                    </div>
+                </div>
+            </footer>
+            <!--end footer-->
+    
+        </div>
+    </body>
+</html>

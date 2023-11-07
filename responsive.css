@@ -1,0 +1,30 @@
+@media (min-width:1025px){
+	nav li:hover a.nav-link{
+		color:#fff;
+		font-weight: bold;
+		text-decoration: none;
+	}
+    a.dropdown-item{
+        color:#fff;
+    }
+	nav li:hover a.nav-link span:first-child:after{
+		top:0px;
+		right:0px;
+		opacity:1
+	}
+	nav li:hover a.nav-link span:last-child:after{
+		bottom:0px;
+		left:0px;
+		opacity:1
+	}
+	nav ul li a:hover + .dropdown-menu, .dropdown-menu:hover {
+		display: block;
+        color: #fff;
+		background:#646464;
+	}
+	a.dropdown-item:hover{
+		background-color:#ACB3B9;
+		color: #fff;
+		font-weight:600;
+	}
+}

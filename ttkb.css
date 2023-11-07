@@ -1,0 +1,23 @@
+.subject-box {
+    margin-left: 10px;
+    height: 500px;
+    overflow-y: auto;
+}
+div {
+    display: block;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+.subject{
+    font-size: 1.3rem;
+}

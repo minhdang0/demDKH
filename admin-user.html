@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Page - User</title>
+  <link rel="icon" type="image/png" href="addd.png">
+ 	  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css' />
+	<link rel='stylesheet prefetch' href="css/jquery.toastmessage.css" />
+	   <link href="./css/bootstrap-theme.min.css" rel="stylesheet" />
+	   <script src="./js/bootstrap.min.js"></script>
+	 <link rel="stylesheet" href="/css/bootstrap.css" />
+      <link rel="stylesheet" href="css/style.css" />
+      <script src="./js/jquery-3.2.1.min.js"></script>
+      <script src="./js/admin.js"></script>
+      <script src="./js/jquery.toastmessage.js"></script>
+      <script src="./js/jquery.validate.js"> </script>
+	  <script src="./js/index.js"></script>
+      <style>
+        .container {
+        margin-top: 20px;
+        }
+
+        .panel-heading {
+          font-size: small;
+        }
+
+        .alert {
+            
+        display: none;
+        }
+
+
+        .error {
+
+            color: #e74c3c;
+            font-size: small;
+            
+        }
+    </style>
+  <script>
+        $(document).ready(function(){
+            $.validator.addMethod(
+                    "regex",
+                    function(value, element, regexp) {
+                        var re = new RegExp(regexp);
+                        return this.optional(element) || re.test(value);
+                    },
+                    "Please check your input."
+            );
+         $("form[name='form']").validate({
+            rules: {
+                
+                name: {
+                    required:true,
+                    regex: "^[a-zA-Z'.\\s]{5,15}$"
+                },
+                price: {
+                    required:true,
+                    regex: "^[0-9]+$"
+                },
+                img :{
+                    regex:"^\w+\.(?i)(ico|jpg|png|bif|bmp)$"
+                }
+
+            },
+          
+            messages: {
+                name:{
+                    required: "Bắt buộc nhập tên tour",
+                    regex:"Tên tour phải là chữ chứa ít nhất từ 5-15 ký tự"
+                },
+                 price: {
+                      required: "Bắt buộc nhập đơn giá",
+                        regex:"Đơn giá phải là số"
+                 },
+                 img:{
+                     regex:"Không đúng định dạng file hình"
+                 }
+            },
+            submitHandler: function(form) {
+               
+                form.submit();
+            }
+        });
+
+        });
+    </script>
+
+</head>
+
+<body>
+  <div class="container">
+<div class="sideArea">
+    <div class="avatar">
+		
+       <div><img src="tml.jpg" alt=""></div>
+        <div class="avatarName">Trang Admin <br></div>
+    </div>
+    <ul class="sideMenu">
+        <li><a href="admin.html"><span class="fa fa-plus"></span>Add Subjects</a></li>
+		<li class="active"><a href="admin-user.html"><span class="fa fa-user"></span>Users</a></li>
+        <li><a href="suaxoa.html"><span class="fa fa-list"></span>Danh sách môn học </a></li>
+    </ul>
+</div>
+
+<div class="mainArea">
+    <nav class="navTop row">
+        <div class="dropdown">
+            <select id="redirectSelect" onchange="redirect(this)">
+                <option value="">Chọn trang</option>
+                <option value="index.html">Trang chủ</option>
+                <option value="index.html">Logout</option>
+              </select>
+        </div>
+    </nav>
+    <div class="mainContent">  
+<div class="row filterGroup">
+    <form action="" method="POST" class="formSearch fl">
+        <input type="text" class="inputSearch" placeholder="Search">
+        <button type="submit" class="btnSearch"><i class="fa fa-search"></i></button>
+    </form>
+
+</div>
+
+
+<!-- DETAIL FORM -->
+<form name="form" action="" method="POST" enctype="multipart/form-data" class="form">
+    <div class="formHeader row">
+        <h2 class="text-1 fl">Thêm User</h2>
+
+    </div>
+    <div class="formBody row">
+        <div class="column s-6">
+            <label class="inputGroup">
+                <span>Tên User</span>
+                <span><input type="text" name="User" id="Username-new"></span>
+				<span id="tbusername" class="text-danger">
+            </label>
+			<label class="inputGroup">
+                <span>Mã User</span>
+                <span><input type="text" name="IDUser" id="IDUser-new"></span>
+				<span id="tbiduser" class="text-danger">
+            </label>
+
+            <label class="inputGroup">
+                <span>Khoa</span>
+                <span><input type="text" name="falcuty" id="falcuty-new"></span>
+				<span id="tbfalcuty" class="text-danger">
+            </label>
+        </div>
+        <div class="column s-6">
+            <label class="inputGroup">
+                <span>Trình Độ</span>
+                <span>
+                    <select name="cate" id="level">
+                        <option value="sv">Sinh Viên</option>
+                        <option value="gv">Giảng Viên</option>
+                    </select>
+                  
+                </span>
+            </label>            
+        </div>
+      <button style="float:left; width:10%;" id="btnInsertUser" type="button" class="btnSave bg-1 text-fff text-bold fr">Lưu</button>
+    </div>
+</form> 
+
+<!-- <form action="#" method="GET" name="listForm" class="form scrollX" style="margin-top:50px;"> -->
+    <div class="formHeader row">
+        <h2 class="text-1 fl">DANH SÁCH USERS</h2>
+		
+    </div>
+
+    <div class="table">
+        <div class="row bg-1">
+            <div class="cell cell-fix-150 text-left text-fff">MÃ USER</div>
+            <div class="cell cell-fix-200 text-left text-fff">TÊN USER</div>
+            <div class="cell cell-fix-200 text-left text-fff">KHOA</div>
+            <div class="cell cell-fix-100 text-left text-fff">TRÌNH ĐỘ</div>
+            <div class="cell cell-fix-100 text-center text-fff">EDIT</div>
+        </div>
+
+        <ul class="list-info" style="overflow:auto; height:300px;">
+            <li class="row">
+                <div class="cell code cell-fix-150 text-left">A41184</div>
+                <div class="cell user-name cell-fix-200 text-left">Nguyễn ĐÌnh Khánh</div>
+                <div class="cell falcuty cell-fix-200 text-left">Công Nghệ Thông Tin</div>
+                <div class="cell level cell-fix-100 text-left"><label value="sv">Sinh Viên</label></div>
+                <div class="cell cell-fix-100 right text-left">
+                    <button type="button" class="btnEditUser fa fa-pencil bg-1 text-fff" onclick="fillEditUser(this)"></button>
+                    <button  type="button" class="btnRemoveUser fa fa-remove bg-1 text-fff" onclick="removeUser(this)"></button>
+                </div>
+            </li>
+            <li class="row">
+                <div class="cell code cell-fix-150 text-left">CTI381</div>
+                <div class="cell user-name cell-fix-200 text-left">Nguyễn Thị Hồng Minh</div>
+                <div class="cell falcuty cell-fix-200 text-left">Công Nghệ Thông Tin</div>
+                <div class="cell level cell-fix-100 text-left">Giảng Viên</div>
+                <div class="cell cell-fix-100 text-left right">
+                    <button type="button" class="btnEditUser fa fa-pencil bg-1 text-fff" onclick="fillEditUser(this)"></button>
+                    <button  type="button" class="btnRemoveUser fa fa-remove bg-1 text-fff" onclick="removeUser(this)"></button>
+                </div>
+        </ul>
+
+    </div> 
+	
+<!-- </form> -->
+            </div>
+    </div>
+</div>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
