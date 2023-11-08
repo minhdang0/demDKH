@@ -343,3 +343,11 @@ a.login-window.button {
    
     border-radius: 5px;
 }
+.login{
+    margin-top:70px;
+}
+
+
+.submit-button:hover {
+    background: #23527c; 
+}
