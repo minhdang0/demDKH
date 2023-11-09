@@ -24,22 +24,25 @@
     box-sizing: border-box; 
     cursor: pointer;
 }
-@media only screen and (max-width: 600px) {
-   #mytable {
-        font-size: 12px; 
-    }
-    #mytable, #mytable tbody, #mytable tr, #mytable th, #mytable td {
-        display: block;
-        width: 100%;
-    }
-     #mytable tr {
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-    }
-    #mytable td {
-        text-align: right;
-        text-align: center; 
-        position: relative;
-        padding-left: 50%; 
-    }
-  }
+table{
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+}
+.table th {
+  margin-top: 0px;
+  border: 0;
+  font-family: Tahoma, "Times New Roman" , Times, serif;
+  font-weight: bold;
+  color: White;
+  background:#6296C5;
+  padding: 2px;
+
+}
+.table tr td
+{
+    font-size: 85%;  
+    border-bottom: 1px dotted #ccc;
+    padding: 3px 4px;       
+}
