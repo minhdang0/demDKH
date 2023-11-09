@@ -34,13 +34,6 @@
       display: block;
     }
   
-    /* Ẩn tiêu đề cột */
-    thead tr {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
-    }
-  
     tr {
       margin-bottom: 15px;
       border: 1px solid #ccc;
