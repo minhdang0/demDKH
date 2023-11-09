@@ -251,7 +251,7 @@ a, a:visited, a:active{
     z-index:99999;/*đặt z-index để nó nổi bật và chồng lên phần tử khác trong trang*/
     top:10%;
     left:50%;
-    margin-left:-300px;
+    margin-left:-200px;
 }
 		
 .login .login_title
