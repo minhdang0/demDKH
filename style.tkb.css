@@ -25,35 +25,21 @@
     cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
-    .table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-      display: block;
+   #mytable {
+        font-size: 12px; 
     }
-  
-    tr {
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
+    #mytable, #mytable tbody, #mytable tr, #mytable th, #mytable td {
+        display: block;
+        width: 100%;
     }
-  
-    td {
-      border: none;
-      position: relative;
-      padding-left: 50%;
+     #mytable tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
     }
-  
-    td:before {
-      position: absolute;
-      top: 6px;
-      left: 6px;
-      width: 45%;
-      padding-right: 10px;
-      white-space: nowrap;
+    #mytable td {
+        text-align: right;
+        text-align: center; 
+        position: relative;
+        padding-left: 50%; 
     }
-  
-    
-    
   }
